@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>6x6-Reversi Oracle</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=240, initial-scale=0.5, maximum-scale=0.5, minimum-scale=0.5" />
+  <meta name="description" content='6x6-Reversi Oracle is a "perfect" player for Reversi using 6x6 board' />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="6x6-Reversi Oracle" />
+  <meta property="og:url" content="https://mame.github.io/mame/6x6-reversi-oracle/" />
+  <meta property="og:description" content='6x6-Reversi Oracle is a "perfect" player for Reversi using 6x6 board' />
+  <meta property="og:site_name" content="6x6-Reversi Oracle" />
+  <meta
+    property="og:image"
+    content="https://mame.github.io/6x6-reversi-oracle/ogp.png"
+  />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="format-detection" content="telephone=no" />
+  <link rel="stylesheet" href="o66.css">
+</head>
+<body>
+  <div id="status" class="panel">
+    <span id="white-disc-count" class="disc-count">2</span>
+    <span id="white-disc" class="icon">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="20" stroke="currentColor" fill="white" />
+      </svg>
+    </span>
+    <div id="info">
+      <span id="white-percent" class="percent">50%</span>
+      <span id="bar"><span id="evaluator"></span></span>
+      <span id="black-percent" class="percent">50%</span>
+    </div>
+    <span id="message">You lose</span>
+    <span id="black-disc" class="icon">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 40 40">
+        <circle cx="20" cy="20" r="20" stroke="black" fill="black" />
+      </svg>
+    </span>
+    <span id="black-disc-count" class="disc-count">2</span>
+  </div>
+  <div id="about-modal">
+    <div id="description" class="panel">
+      <h1>6x6-Reversi Oracle</h1>
+      <p>
+        Reversi has been solved for a 6x6 board: the second player (white) wins under perfect play.
+        You are the first player (black), and this perfect AI makes white move.
+        This means <b>you cannot beat 6x6-Reversi Oracle</b>. Enjoy being miserable.
+      </p>
+      <p class="source">Source code: <a href="">GitHub mame/6x6-reversi-oracle</a></p>
+    </div>
+  </div>
+  <div id="about-button" class="panel icon">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 40 40">
+      <path d="M20,0C8.974,0,0,8.973,0,20c0,11.027,8.974,20,20,20c11.029,0,20-8.973,20-20C40,8.973,31.029,0,20,0z M23.439,31.749c0,1.048-0.851,1.896-1.896,1.896h-3.086c-1.049,0-1.896-0.849-1.896-1.896V21.454c0-1.047,0.849-1.896,1.896-1.896h3.086c1.047,0,1.896,0.85,1.896,1.896V31.749z M23.439,15.764c0,1.049-0.851,1.896-1.896,1.896h-3.086c-1.049,0-1.896-0.85-1.896-1.896v-3.25c0-1.049,0.849-1.896,1.896-1.896h3.086c1.047,0,1.896,0.849,1.896,1.896V15.764z" stroke="currentColor" fill="currentColor" />
+    </svg>
+  </div>
+  <div id="thinking">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 34.333 34.333">
+      <path d="M34.167,22.333v7.666c0,1.381-1.119,2.5-2.5,2.5s-2.5-1.119-2.5-2.5v-0.24c-3.109,2.886-7.238,4.574-11.667,4.574c-6.937,0-13.152-4.135-15.836-10.533c-0.132-0.315-0.194-0.643-0.194-0.965c0-0.979,0.576-1.905,1.533-2.308c1.273-0.534,2.738,0.064,3.272,1.339c1.902,4.536,6.309,7.467,11.225,7.467c3.737,0,7.176-1.694,9.446-4.5H24c-1.381,0-2.5-1.119-2.5-2.5s1.119-2.5,2.5-2.5h7.666C33.047,19.833,34.167,20.952,34.167,22.333z M10.333,14.834c1.381,0,2.5-1.12,2.5-2.5c0-1.381-1.119-2.5-2.5-2.5H7.796C10.061,6.832,13.618,5,17.5,5c4.917,0,9.323,2.932,11.226,7.468c0.533,1.273,1.998,1.872,3.271,1.339c1.273-0.534,1.872-1.998,1.339-3.272C30.651,4.135,24.436,0,17.5,0C12.75,0,8.337,1.941,5.167,5.219V4.667c0-1.381-1.12-2.5-2.5-2.5c-1.381,0-2.5,1.119-2.5,2.5v7.667c0,0.663,0.264,1.299,0.732,1.769c0.469,0.469,1.104,0.731,1.768,0.731H10.333z" stroke="currentColor" fill="currentColor" />
+    </svg>
+  </div>
+  <div id="undo-button" class="panel icon">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1em" height="1em" viewBox="0 0 40.5 40.5">
+      <path d="M40.5,20.25c0,9.374-7.625,17-17,17c-1.656,0-3-1.343-3-3s1.344-3,3-3c6.064,0,11-4.936,11-11c0-6.065-4.936-11-11-11c-5.756,0-10.486,4.447-10.953,10.086l1.832-1.832c1.171-1.172,3.071-1.172,4.242,0c1.172,1.171,1.172,3.071,0,4.242l-6.75,6.75c-0.563,0.562-1.326,0.879-2.121,0.879c-0.796,0-1.559-0.316-2.121-0.879l-6.75-6.75c-1.172-1.172-1.172-3.071,0-4.242c1.172-1.172,3.071-1.172,4.243,0l1.444,1.444c0.669-8.766,8-15.698,16.934-15.698C32.875,3.25,40.5,10.876,40.5,20.25z" stroke="currentColor" fill="currentColor" />
+    </svg>
+  </div>
+  <div id="canvas-container"></div>
+  <script src="main.js"></script>
+</body>
+</html>

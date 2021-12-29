@@ -1,0 +1,168 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+a {
+  color: inherit;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+div#canvas-container {
+  width: 100vw;
+  height: 100vh;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+}
+
+div.panel {
+  position: fixed;
+  background: #4e4cb4;
+  opacity: 0.9;
+  user-select: none;
+}
+
+div#status {
+  padding: 0.1em 0.3em;
+  user-select: none;
+  left: 10px;
+  right: 10px;
+  top: 10px;
+  display: flex;
+  align-items: center;
+  color: #ccffcc;
+}
+
+span.disc-count {
+  font-size: 2em;
+  width: 1.5em;
+  padding: 0px;
+  text-align: center;
+}
+
+div#info {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+span#message {
+  flex-grow: 1;
+  display: none;
+  font-size: 2em;
+  text-align: center;
+}
+
+span.percent {
+  width: 2.5em;
+  font-size: 2em;
+}
+
+span#black-percent {
+  text-align: left;
+}
+
+span#white-percent {
+  text-align: right;
+}
+
+span#bar {
+  display: block;
+  flex-grow: 1;
+  margin: 0px 1em;
+  padding: 0px;
+  height: 1em;
+  background-color: #ffffff;
+}
+
+span#evaluator {
+  display: block;
+  height: 1em;
+  width: 50%;
+  background-color: #888888;
+  border: 1px solid #ffffff;
+}
+
+.icon {
+  font-size: 3em;
+  height: 1.4em;
+  padding: 0.2em;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+.icon svg {
+  vertical-align: top;
+}
+
+div#about-button {
+  left: 10px;
+  bottom: 10px;
+}
+
+div#thinking {
+  position: absolute;
+  margin: 0px;
+  opacity: 0.9;
+  user-select: none;
+  font-size: 3em;
+  color: #ccccff;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+div#thinking svg {
+  animation: rotation 1s linear infinite;
+}
+
+@keyframes rotation {
+  0% { transform: rotate(360deg); }
+  100% { transform: rotate(0deg); }
+}
+
+div#undo-button {
+  right: 10px;
+  bottom: 10px;
+}
+
+div#about-modal {
+  display: none;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+div#about-modal.modal-enabled {
+  display: block;
+}
+
+div#description {
+  top: 50%;
+  left: 50%;
+  padding: 1em;
+  font-size: 1.2em;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  width: 50%;
+  color: #ccffcc;
+}
+
+h1 {
+  text-align: center;
+}
+
+p.source {
+  text-align: center;
+}
