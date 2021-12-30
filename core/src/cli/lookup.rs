@@ -29,16 +29,16 @@ pub fn main(moves: Vec<String>, auto: bool) {
     if black {
         println!("move: black (X)");
 
-        let cands;
-        if let Some(cands_) = lookup::get_black_moves(moves.clone()) {
-            cands = cands_;
-        } else if auto {
-            cands = search::get_black_moves(moves.clone());
-        } else {
-            println!("You have gone beyond the scope of the dictionary.");
-            println!("Try: search {}", original_moves.join(" "));
-            return;
-        }
+        let cands =
+            if let Some(cands_) = lookup::get_black_moves(moves.clone()) {
+                cands_
+            } else if auto {
+                search::get_black_moves(moves.clone())
+            } else {
+                println!("You have gone beyond the scope of the dictionary.");
+                println!("Try: search {}", original_moves.join(" "));
+                return
+            };
 
         let mut i = 0;
         let n = cands.len();
