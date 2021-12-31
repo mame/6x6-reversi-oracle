@@ -131,6 +131,7 @@ export const init = (blackMoveListener: BlackMoveListener) => {
           return updateState(state);
         }
       }
+      return updateState(head.state);
     };
 
     const onResize = () => {
