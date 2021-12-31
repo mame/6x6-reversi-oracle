@@ -135,7 +135,11 @@ export const init = (blackMoveListener: BlackMoveListener) => {
     };
 
     const onResize = () => {
-      view.resize(window.innerWidth, window.innerHeight);
+      view.resize(
+        window.innerWidth,
+        window.innerHeight,
+        window.devicePixelRatio
+      );
     };
 
     onResize();

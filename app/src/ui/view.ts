@@ -10,7 +10,7 @@ import * as Values from './values';
 export type View = {
   getDomElement: () => HTMLCanvasElement;
   setAnimationLoop: (tick: () => void) => void;
-  resize: (width: number, height: number) => void;
+  resize: (width: number, height: number, pixelRatio: number) => void;
   tick: (board: Board.Board, elapsed: number) => void;
   updateValues: (values: (number | null)[]) => void;
   pickCell: (x: number, y: number) => number | null;
@@ -37,7 +37,9 @@ export const init = (): View => {
   pointLight.position.set(-10, 10, -10);
   scene.add(pointLight);
 
+  const defaultFov = 50;
   const camera = new THREE.PerspectiveCamera();
+  camera.fov = defaultFov;
   camera.position.set(0, 10, 2);
   camera.lookAt(0, 0, 0);
 
@@ -54,11 +56,18 @@ export const init = (): View => {
   return {
     getDomElement: () => renderer.domElement,
     setAnimationLoop: (tick: () => void) => renderer.setAnimationLoop(tick),
-    resize: (width: number, height: number) => {
-      renderer.setPixelRatio(window.devicePixelRatio);
+    resize: (width: number, height: number, pixelRatio: number) => {
+      renderer.setPixelRatio(pixelRatio);
       renderer.setSize(width, height);
-
       camera.aspect = width / height;
+      if (width > height) {
+        camera.fov = defaultFov;
+      } else {
+        const f = ((defaultFov / 2) * Math.PI) / 180;
+        camera.fov =
+          2 * Math.atan2(height * Math.sin(f), width * Math.cos(f)) * 180 /
+          Math.PI;
+      }
       camera.updateProjectionMatrix();
     },
     tick: (board: Board.Board, elapsed: number) => {
