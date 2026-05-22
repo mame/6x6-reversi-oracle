@@ -1,9 +1,23 @@
-development
+# 6x6-reversi-oracle / app
+
+Frontend for the 6x6-reversi-oracle, built with [Vite](https://vitejs.dev/) +
+TypeScript + [Three.js](https://threejs.org/). Calls into the Rust/WASM core in
+`../core/pkg` (build it first with `wasm-pack build`).
+
+## Develop
+
 ```
-npx webpack-dev-server
+npm install
+npm run dev      # http://localhost:5173
 ```
 
-build
+## Build for deployment
+
 ```
-npx webpack
+npm run build    # outputs to ../docs
+npm run preview  # serve the built site locally
 ```
+
+`base: './'` is set in `vite.config.ts` so the build is portable — it works
+from `https://mame.github.io/6x6-reversi-oracle/` (GitHub Pages) and from any
+other path.

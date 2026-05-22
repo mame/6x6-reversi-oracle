@@ -18,10 +18,10 @@ $ cargo install wasm-pack
 $ wasm-pack build
 $ cd ../app
 $ npm install
-$ npx webpack
+$ npm run build       # outputs to ../docs
 ```
 
-You can also use `npx webpack-dev-server` to develop the app.
+For development, run `npm run dev` and open the printed URL.
 
 ## How to generate data files
 
