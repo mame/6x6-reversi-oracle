@@ -23,19 +23,28 @@ export const init = (): View => {
   const scene = new THREE.Scene();
   scene.fog = new THREE.Fog(0xffffff, 5, 40);
 
-  const ambientLight = new THREE.AmbientLight();
-  ambientLight.intensity = 0.5;
+  const legacyIntensity = (i: number) => Math.pow(i, 2.2) * Math.PI;
+
+  const ambientLight = new THREE.AmbientLight(0xffffff, legacyIntensity(0.5));
   scene.add(ambientLight);
 
-  const spotLight = new THREE.SpotLight();
+  const spotLight = new THREE.SpotLight(0xffffff, legacyIntensity(1));
   spotLight.position.set(10, -10, 20);
   spotLight.angle = 0.15;
   spotLight.penumbra = 1;
+  spotLight.decay = 0;
   scene.add(spotLight);
 
-  const pointLight = new THREE.PointLight();
+  const pointLight = new THREE.PointLight(0xffffff, legacyIntensity(1));
   pointLight.position.set(-10, 10, -10);
   scene.add(pointLight);
+
+  const boardLight = new THREE.SpotLight(0xffffff, legacyIntensity(0.95));
+  boardLight.position.set(5, 18, 5);
+  boardLight.angle = 0.2;
+  boardLight.penumbra = 1;
+  boardLight.decay = 0;
+  scene.add(boardLight);
 
   const defaultFov = 50;
   const camera = new THREE.PerspectiveCamera();

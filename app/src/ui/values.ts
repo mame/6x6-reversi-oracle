@@ -14,6 +14,7 @@ export const init = (scene: THREE.Scene): Values => {
   ctx.font = '16px sans-serif';
   const geometry = new THREE.PlaneGeometry(6, 6);
   const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
   const material = new THREE.MeshBasicMaterial({
     map: texture,
     transparent: true,

@@ -13,7 +13,7 @@ export type Cells = {
 
 export const init = (scene: THREE.Scene): Cells => {
   const geometry = new THREE.PlaneGeometry(1, 1);
-  const material = new THREE.MeshStandardMaterial();
+  const material = new THREE.MeshBasicMaterial();
   const cellsMesh = new THREE.InstancedMesh(geometry, material, 6 * 6);
 
   scene.add(cellsMesh);
@@ -54,7 +54,8 @@ export const init = (scene: THREE.Scene): Cells => {
           tmpColor.setRGB(
             THREE.MathUtils.lerp(0x2e, 0x09, f) / 255,
             THREE.MathUtils.lerp(0x67, 0xee, f) / 255,
-            THREE.MathUtils.lerp(0x4c, 0x96, f) / 255
+            THREE.MathUtils.lerp(0x4c, 0x96, f) / 255,
+            THREE.SRGBColorSpace
           );
           cellsMesh.setColorAt(id, tmpColor);
         }
