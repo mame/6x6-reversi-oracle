@@ -1,4 +1,4 @@
-import O66Worker from './o66.worker.ts';
+import O66Worker from './o66.worker.ts?worker';
 
 type BlackMovesListener = (
   moves: number[],

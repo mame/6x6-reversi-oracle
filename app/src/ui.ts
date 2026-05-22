@@ -163,7 +163,11 @@ export const init = (blackMoveListener: BlackMoveListener) => {
     const undo = document.querySelector('#undo-button')!;
     undo.addEventListener('click', onUndo);
   };
-  window.addEventListener('DOMContentLoaded', onDOMContentLoaded);
+  if (document.readyState === 'loading') {
+    window.addEventListener('DOMContentLoaded', onDOMContentLoaded);
+  } else {
+    onDOMContentLoaded();
+  }
 
   return {
     enqueue: (moves: number[], board: Board.Board) => {

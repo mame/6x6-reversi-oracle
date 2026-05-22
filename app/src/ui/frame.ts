@@ -1,5 +1,4 @@
 import * as THREE from 'three';
-import { PlaneBufferGeometry } from 'three';
 
 const genGeometry = () => {
   const vertices: number[] = [];
@@ -67,7 +66,7 @@ export const init = (scene: THREE.Scene) => {
 
   scene.add(new THREE.Mesh(geometry, material));
 
-  const floor_geometry = new PlaneBufferGeometry(1000, 1000);
+  const floor_geometry = new THREE.PlaneGeometry(1000, 1000);
   floor_geometry.rotateX(-Math.PI / 2);
   floor_geometry.translate(0, -0.4, 0);
   const floor_material = new THREE.MeshLambertMaterial({ color: '#DED2BF' });
