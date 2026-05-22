@@ -2,20 +2,31 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+    Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   font-size: 2vw;
+  background: #1a1a1a;
 }
 
 a {
   color: inherit;
 }
 
-* {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
-div#canvas-container {
+button {
+  background: transparent;
+  border: 0;
+  font: inherit;
+  color: inherit;
+}
+
+#canvas-container {
   width: 100vw;
   height: 100vh;
 }
@@ -23,16 +34,17 @@ div#canvas-container {
 canvas {
   width: 100%;
   height: 100%;
+  display: block;
 }
 
-div.panel {
+.panel {
   position: fixed;
   background: #4e4cb4;
   opacity: 0.9;
   user-select: none;
 }
 
-div#status {
+#status {
   padding: 0.1em 0.3em;
   user-select: none;
   left: 10px;
@@ -43,50 +55,50 @@ div#status {
   color: #ccffcc;
 }
 
-span.disc-count {
+.disc-count {
   font-size: 2em;
   width: 1.5em;
-  padding: 0px;
+  padding: 0;
   text-align: center;
 }
 
-div#info {
+#info {
   flex-grow: 1;
   display: flex;
   flex-direction: row;
   align-items: center;
 }
 
-span#message {
+#message {
   flex-grow: 1;
   display: none;
   font-size: 2em;
   text-align: center;
 }
 
-span.percent {
+.percent {
   width: 2.5em;
   font-size: 2em;
 }
 
-span#black-percent {
+#black-percent {
   text-align: left;
 }
 
-span#white-percent {
+#white-percent {
   text-align: right;
 }
 
-span#bar {
+#bar {
   display: block;
   flex-grow: 1;
-  margin: 0px 1em;
-  padding: 0px;
+  margin: 0 1em;
+  padding: 0;
   height: 1em;
   background-color: #ffffff;
 }
 
-span#evaluator {
+#evaluator {
   display: block;
   height: 1em;
   width: 50%;
@@ -106,16 +118,17 @@ span#evaluator {
   vertical-align: top;
 }
 
-div#about-button {
+#about-button {
   left: 10px;
   bottom: 10px;
 }
 
-div#thinking {
-  position: absolute;
-  margin: 0px;
+#thinking {
+  position: fixed;
+  margin: 0;
   opacity: 0.9;
   user-select: none;
+  pointer-events: none;
   font-size: 3em;
   color: #ccccff;
   bottom: 10px;
@@ -123,40 +136,45 @@ div#thinking {
   transform: translateX(-50%);
 }
 
-div#thinking svg {
+#thinking svg {
   animation: rotation 1s linear infinite;
 }
 
 @keyframes rotation {
-  0% { transform: rotate(360deg); }
-  100% { transform: rotate(0deg); }
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
 }
 
-div#undo-button {
+#undo-button {
   right: 10px;
   bottom: 10px;
 }
 
-div#about-modal {
+#about-modal {
   display: none;
   height: 100vh;
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 10;
 }
 
-div#about-modal.modal-enabled {
+#about-modal.modal-enabled {
   display: block;
 }
 
-div#description {
+#description {
   top: 50%;
   left: 50%;
   padding: 1em;
   font-size: 1.2em;
   position: absolute;
-  transform: translate(-50%,-50%);
-  width: 50%;
+  transform: translate(-50%, -50%);
+  width: min(90%, 30em);
   color: #ccffcc;
 }
 
